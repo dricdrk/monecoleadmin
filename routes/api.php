@@ -14,9 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+ Route::post('login', 'API\UserController@login');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-// route for institution controller
-Route::apiResource('institution', 'API\InstitutionController');
-Route::apiResource('examresult', 'API\ExamResultController');
+Route::group([
+    'prefix' => ''
+], function () {
+   
+    Route::post('signup', 'API\UserController@signup');
+    
+});
+
+Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('logout', 'API\UserController@logout');
+        Route::get('user', 'API\UserController@user');
+        Route::apiResource('institution', 'API\InstitutionController');
+        Route::apiResource('examresult', 'API\ExamResultController');
+    });

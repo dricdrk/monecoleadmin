@@ -26,6 +26,7 @@ class CreateExamResultsTable extends Migration
              ->references('id')
              ->on('institutions')
              ->onDelete('cascade');
+        });
     }
 
     /**
