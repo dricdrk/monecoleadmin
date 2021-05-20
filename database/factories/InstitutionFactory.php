@@ -11,7 +11,7 @@ $factory->define(Institution::class, function (Faker $faker) {
             'states' => $faker->city,
             'adress' => $faker->address,
             'mail'  => $faker->email,
-            'phone_number' => $faker->phoneNumber,
+            'phone_number' => $faker->phoneNumber
     ];
 });
 
